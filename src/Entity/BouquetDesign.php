@@ -49,4 +49,19 @@ class BouquetDesign
     {
         return $this->flowerQuantities;
     }
+
+    public static function parse(string $code): ?self
+    {
+        $parts = [];
+        if (preg_match('/^([A-Z])([S,L])((\d+[a-z])+)(\d+)$/', $code, $parts) === 0 ) {
+            return null;
+        }
+
+        $matches = [];
+        preg_match_all('/(\d+)([a-z])/', $code, $matches);
+
+        $quantities = array_combine($matches[2], array_map('intval' , $matches[1]));
+
+        return new self($parts[1], $parts[2], $quantities, (int) $parts[5]);
+    }
 }
