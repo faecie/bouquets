@@ -17,6 +17,11 @@ class InMemoryFlowerRepository implements RepositoryInterface
         $this->flowers = array_merge(array_map(fn(Flower $flower) => $flower, $collection), $this->flowers);
     }
 
+    public function getAll(): array
+    {
+        return $this->flowers;
+    }
+
     public function getAllByName(string $name): array
     {
         $result = [];
@@ -32,6 +37,16 @@ class InMemoryFlowerRepository implements RepositoryInterface
     public function count(): int
     {
         return count($this->flowers);
+    }
+
+    public function countWithSize(string $size): int
+    {
+        $result = 0;
+        foreach ($this->flowers as $flower) {
+            $result += $flower->getSize() === $size ? 1 : 0;
+        }
+
+        return $result;
     }
 
     public function delete(object $entity): void
