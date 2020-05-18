@@ -1,0 +1,29 @@
+{
+  "name": "faecie/bouquets",
+  "description": "Bouquets generator",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ruslan",
+      "email": "umyarovrr@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Faecie\\Bouquets\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Faecie\\Bouquets\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.2@dev"
+  }
+}
